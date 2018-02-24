@@ -117,8 +117,8 @@ async def response_factory(app, handler):
                 resp = web.Response(body=app['__templating__'].get_template(template).render(**r).encode('utf-8'))
                 resp.content_type = 'text/html;charset=utf-8'
                 return resp
-        if isinstance(r, int) and r >= 100 and r < 600:
-            return web.Response(r)
+        if isinstance(r, int) and t >= 100 and t < 600:
+            return web.Response(t)
         if isinstance(r, tuple) and len(r) == 2:
             t, m = r
             if isinstance(t, int) and t >= 100 and t < 600:
@@ -145,8 +145,8 @@ async def init(loop):
     add_routes(app, 'handlers')
     add_static(app)
     handler = app.make_handler()
-    svr = await loop.create_server(handler, '127.0.0.1', 9000)
-    logging.info('server start at http://127.0.0.1:9000...')
+    svr = await loop.create_server(handler, '127.0.0.1', 8000)
+    logging.info('server start at http://127.0.0.1:8000...')
     return svr
 
 loop = asyncio.get_event_loop()

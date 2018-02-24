@@ -33,6 +33,9 @@
                         <div class="uk-dropdown uk-dropdown-navbar">
                             <ul class="uk-nav uk-nav-navbar">
                                 <li><a href="/signout"><i class="uk-icon-sign-out"></i> 登出</a></li>
+                                {% if __user__.admin %}
+                                    <li><a href="/manage/"><i class="uk-icon-key"></i> 管理</a></li>
+                                {% endif%}
                             </ul>
                         </div>
                     </li>
@@ -56,7 +59,7 @@
 
     <!--<div class="uk-margin-large-top" style="background-color:#eee; border-top:1px solid #ccc;">-->
         <!--<div class="uk-container uk-container-center uk-text-center">-->
-            <!--<div class="uk-panel uk-margin-top uk-margin-bottom">-->
+            <div class="uk-panel uk-margin-top uk-margin-bottom">
                 <!--<p>-->
                     <!--<a target="_blank" href="http://weibo.com/liaoxuefeng" class="uk-icon-button uk-icon-weibo"></a>-->
                     <!--<a target="_blank" href="https://github.com/michaelliao" class="uk-icon-button uk-icon-github"></a>-->
@@ -66,7 +69,7 @@
                 <!--<p>Powered by <a href="http://awesome.liaoxuefeng.com">Awesome Python Webapp</a>. Copyright &copy; 2014. [<a href="/manage/" target="_blank">Manage</a>]</p>-->
                 <!--<p><a href="http://www.liaoxuefeng.com/" target="_blank">www.liaoxuefeng.com</a>. All rights reserved.</p>-->
                 <!--<a target="_blank" href="http://www.w3.org/TR/html5/"><i class="uk-icon-html5" style="font-size:64px; color: #444;"></i></a>-->
-            <!--</div>-->
+            </div>
 
         <!--</div>-->
     <!--</div>-->

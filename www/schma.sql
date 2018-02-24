@@ -1,10 +1,10 @@
-drop database if exists awesome;
+drop database if exists webAppDB;
 
-create database awesome;
+create database webAppDB;
 
-use awesome;
+use webAppDB;
 
-grant select, insert, update, delete on awesome.* to 'root'@'localhost'identified by 'root';
+grant select, insert, update, delete on webAppDB.* to 'root'@'localhost'identified by 'root';
 
 create table users(
     `id` varchar(50) not null,

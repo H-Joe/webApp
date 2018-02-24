@@ -33,7 +33,7 @@ async def select(sql, args, size=None):
                 rs = await cur.fetchmany(size)
             else:
                 rs = await cur.fetchall()
-        logging.info('row returns %s' % len(rs))
+        logging.info('row returns: %s' % len(rs))
         return rs
 
 
@@ -227,7 +227,7 @@ class Model(dict, metaclass=ModelMetaclass):
 
     async def remove(self):
         args = [self.getValue(self.__primary_key__)]
-        rows = await execute(self.__delete, args)
+        rows = await execute(self.__delete__, args)
         if rows != 1:
             logging.warning('failed to remove by primary key: affected row: %s' % rows)
             
