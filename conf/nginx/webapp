@@ -1,0 +1,36 @@
+server{
+
+    listen      80;
+    root        /home/qiao/srv/webapp/www;
+    access_log  /home/qiao/srv/webapp/log/access_log;
+    error_log   /home/qiao/srv/webapp/log/error_log
+
+    # server_name webapp.hq.com;
+
+    client_max_body_size    1m;
+
+    gzip        on;
+    gzip_min_length     1024;
+    gzip_buffers        48k;
+    gzip_types          text/css application/x-javascript application/json;
+
+    sendfile on;
+
+    #location /favicon.ico{
+     #   root /home/qiao/srv/webapp/www;
+    #}
+    location ~^\/static\/.*${
+       root /home/qiao/srv/webapp/www;
+    }
+
+    location / {
+        proxy_pass          http://127.0.0.1:8000;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    Host $host;
+        proxy_set_header    X-Forwarded_For $proxy_add_x_forwarded_for;
+    }
+
+
+
+
+}
